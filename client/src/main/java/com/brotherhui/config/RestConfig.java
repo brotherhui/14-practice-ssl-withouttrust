@@ -19,20 +19,6 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class RestConfig {
 
-	@Value("${ssltest.trust-store-password}")
-	private String trustStorePassword;
-
-	@Value("${ssltest.trust-store}")
-	private Resource trustStore;
-
-	@Value("${ssltest.key-store-password}")
-	private String keyStorePassword;
-
-	@Value("${ssltest.key-password}")
-	private String keyPassword;
-
-	@Value("${ssltest.key-store}")
-	private Resource keyStore;
 
 	@Bean
 	public RestOperations restOperations(ClientHttpRequestFactory clientHttpRequestFactory) {
