@@ -1,0 +1,7 @@
+server:
+  port: 8443
+  ssl:
+    key-store: classpath:server.jks
+    key-store-password: s3cr3t
+    key-password: s3cr3t
+
