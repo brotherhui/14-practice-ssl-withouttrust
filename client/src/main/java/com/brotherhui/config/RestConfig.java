@@ -34,7 +34,12 @@ public class RestConfig {
 	public HttpClient create() {
 		try {
 			SSLContextBuilder sslContextBuilder = new SSLContextBuilder();
-			sslContextBuilder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
+// 			sslContextBuilder.loadTrustMaterial(null, new TrustSelfSignedStrategy());
+			sslContextBuilder.loadTrustMaterial(new TrustStrategy() {
+				public boolean isTrusted(final X509Certificate[] chain,
+						final String auth) {
+					return true;
+				}});
 			SSLConnectionSocketFactory sslConnectionSocketFactory = new SSLConnectionSocketFactory(
 					sslContextBuilder.build(), SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
 			CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(sslConnectionSocketFactory)
